@@ -49,6 +49,12 @@ services:
       protocol: TCP
       targetPort: 4318
 
+route:
+  enabled: true
+  host: "" # Optional: specify a custom host if needed (e.g., otel-collector.example.com)
+  # path: "/"
+  tlsTermination: passthrough # Options: "edge", "passthrough", "reencrypt"
+
 nodeSelector: {}
 tolerations: []
 affinity: {}
