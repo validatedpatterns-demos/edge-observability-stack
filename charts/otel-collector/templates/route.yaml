@@ -11,7 +11,7 @@ spec:
     name: {{ .Release.Name }}-otel-collector-loadbalancer
     weight: 100
   port:
-    targetPort: 4318
+    targetPort: 4317
   host: {{ .Values.route.host | default "" }}
   path: {{ .Values.route.path }}
   tls:
