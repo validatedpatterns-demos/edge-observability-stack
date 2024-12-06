@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "otel-collector.fullname" . }}-config
+data:
+  otel_collector_config.yaml: |-
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+            endpoint: "0.0.0.0:4317"  # Ensure this port is open
+          http:
+            endpoint: "0.0.0.0:4318"
+
+    exporters:
+      debug:
+        verbosity: detailed
+      logging:  # Optional: log metrics for debugging
+        loglevel: debug
+      otlphttp/mimir:
+        endpoint: "{{ .Values.mimirurl }}"
+
+    processors:
+      batch:
+        timeout: 10s
+
+    service:
+      pipelines:
+        metrics:
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [logging,debug,otlphttp/mimir]

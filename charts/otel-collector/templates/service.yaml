@@ -1,0 +1,43 @@
+{{- if .Values.services.loadBalancer.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-otel-collector-loadbalancer
+  labels:
+    app: {{ .Chart.Name }}
+  annotations:
+    {{- with .Values.services.loadBalancer.annotations }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+spec:
+  type: {{ .Values.services.loadBalancer.type }}
+  selector:
+    app: {{ .Chart.Name }}
+  ports:
+    {{- range .Values.services.loadBalancer.ports }}
+    - name: {{ .name }}
+      port: {{ .port }}
+      protocol: {{ .protocol }}
+      targetPort: {{ .targetPort }}
+    {{- end }}
+{{- end }}
+
+{{- if .Values.services.clusterIP.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-otel-collector-clusterip
+  labels:
+    app: {{ .Chart.Name }}
+spec:
+  type: {{ .Values.services.clusterIP.type }}
+  selector:
+    app: {{ .Chart.Name }}
+  ports:
+    {{- range .Values.services.clusterIP.ports }}
+    - name: {{ .name }}
+      port: {{ .port }}
+      protocol: {{ .protocol }}
+      targetPort: {{ .targetPort }}
+    {{- end }}
+{{- end }}

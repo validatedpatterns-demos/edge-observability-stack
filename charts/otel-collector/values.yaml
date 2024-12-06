@@ -1,0 +1,54 @@
+# Default values for otel-collector.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+mimirurl: "http://edge-observability-stack-mimir:9009"
+image:
+  repository: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib
+  tag: 0.107.0
+  pullPolicy: IfNotPresent
+
+ports:
+- name: otlp-grpc
+  port: 4317
+  protocol: TCP
+  targetPort: 4317
+- name: otlp-http
+  port: 4318
+  protocol: TCP
+  targetPort: 4318
+
+services:
+  loadBalancer:
+    enabled: true
+    type: LoadBalancer
+    annotations:
+      # Optional annotations for the LoadBalancer
+      # service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
+    ports:
+    - name: otlp-grpc
+      port: 4317
+      protocol: TCP
+      targetPort: 4317
+    - name: otlp-http
+      port: 4318
+      protocol: TCP
+      targetPort: 4318
+
+  clusterIP:
+    enabled: true
+    type: ClusterIP
+    ports:
+    - name: otlp-grpc
+      port: 4317
+      protocol: TCP
+      targetPort: 4317
+    - name: otlp-http
+      port: 4318
+      protocol: TCP
+      targetPort: 4318
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
