@@ -21,7 +21,7 @@ spec:
       targetPort: {{ .targetPort }}
     {{- end }}
 {{- end }}
-
+---
 {{- if .Values.services.clusterIP.enabled }}
 apiVersion: v1
 kind: Service
