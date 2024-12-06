@@ -53,7 +53,7 @@ route:
   enabled: true
   host: "" # Optional: specify a custom host if needed (e.g., otel-collector.example.com)
   # path: "/"
-  tlsTermination: passthrough # Options: "edge", "passthrough", "reencrypt"
+  tlsTermination: edge # Options: "edge", "passthrough", "reencrypt"
 
 nodeSelector: {}
 tolerations: []
