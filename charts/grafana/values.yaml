@@ -48,15 +48,14 @@ service:
 
 # Grafana configuration for Prometheus as a data source
 datasources:
-  datasources.yaml:
-    apiVersion: 1
-    datasources:
-    - name: Mimir
-      type: prometheus
-      url: http://mimir.edge-stack.svc.cluster.local:9009 # Change this to your Prometheus service address
-      # url: {? {.Values.prometheus.url | quote: ''} : ''}
-      access: proxy
-      isDefault: true
+  apiVersion: 1
+  datasources:
+  - name: Mimir
+    type: prometheus
+    url: http://mimir.edge-stack.svc.cluster.local:9009 # Change this to your Prometheus service address
+    # url: {? {.Values.prometheus.url | quote: ''} : ''}
+    access: proxy
+    isDefault: true
 providers:
   grafana-dashboards.yaml:
     apiVersion: 1

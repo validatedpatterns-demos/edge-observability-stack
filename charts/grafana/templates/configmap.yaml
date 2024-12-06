@@ -4,7 +4,7 @@ metadata:
   name: {{ include "grafana.fullname" . }}-config
 data:
   datasources.yaml: |
-    {{ toYaml .Values.datasources }}
+    {{ toYaml .Values.datasources | nindent 4 }}
 
   providers.yaml: |
     {{ toYaml .Values.providers }}
