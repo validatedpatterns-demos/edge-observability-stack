@@ -12,7 +12,6 @@ data:
             tls:
               cert_file: /etc/ssl/tls.crt
               key_file: /etc/ssl/tls.key
-              insecure_skip_verify: true
           http:
             endpoint: "0.0.0.0:4318"
 
