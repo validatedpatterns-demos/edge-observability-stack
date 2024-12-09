@@ -29,13 +29,13 @@ spec:
               mountPath: /etc/otel_collector_config.yaml
               subPath: otel_collector_config.yaml
             - name: tls-secret
-              mountPath: /etc
+              mountPath: /etc/tls
           args: [ "--config", "/etc/otel_collector_config.yaml" ,
                   "--feature-gates", "-component.UseLocalHostAsDefaultHost" ]
       volumes:
         - name: tls-secret
           secret:
-            name: otel-collector-tls
+            secretName: otel-collector-tls
         - name: config
           configMap:
             name: {{ include "otel-collector.fullname" . }}-config
