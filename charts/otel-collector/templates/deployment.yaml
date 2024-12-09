@@ -29,7 +29,7 @@ spec:
               mountPath: /etc/otel_collector_config.yaml
               subPath: otel_collector_config.yaml
             - name: tls-secret
-              mountPath: /etc/tls-secret
+              mountPath: /etc
           args: [ "--config", "/etc/otel_collector_config.yaml" ,
                   "--feature-gates", "-component.UseLocalHostAsDefaultHost" ]
       volumes:
