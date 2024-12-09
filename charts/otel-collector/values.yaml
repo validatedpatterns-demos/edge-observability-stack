@@ -54,6 +54,11 @@ route:
   host: "" # Optional: specify a custom host if needed (e.g., otel-collector.example.com)
   # path: "/"
   tlsTermination: passthrough # Options: "edge", "passthrough", "reencrypt"
+  tlsSecretKeyName: secret/data/hub/otel-cert
+
+secretStore:
+  name: vault-backend
+  kind: clusterSecretStore
 
 nodeSelector: {}
 tolerations: []
