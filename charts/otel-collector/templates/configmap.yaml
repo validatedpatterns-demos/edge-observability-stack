@@ -9,12 +9,12 @@ data:
         protocols:
           grpc:
             endpoint: "0.0.0.0:4317"  # Ensure this port is open
+            tls:
+              cert_file: /etc/ssl/tls.crt
+              key_file: /etc/ssl/tls.key
+              insecure_skip_verify: true
           http:
             endpoint: "0.0.0.0:4318"
-        tls:
-          cert_file: /etc/ssl/tls.crt
-          key_file: /etc/ssl/tls.key
-          insecure_skip_verify: true
 
     exporters:
       debug:
