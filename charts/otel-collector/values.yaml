@@ -58,7 +58,7 @@ route:
 
 secretStore:
   name: vault-backend
-  kind: clusterSecretStore
+  kind: ClusterSecretStore
 
 nodeSelector: {}
 tolerations: []
