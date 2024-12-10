@@ -17,5 +17,23 @@ spec:
   tls:
     termination: {{ .Values.route.tlsTermination }}
     insecureEdgeTerminationPolicy: {{ .Values.route.insecureEdgeTerminationPolicy }}
-
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ include "otel-collector.name" . }}-http
+  labels:
+    app: {{ include "otel-collector.name" . }}
+spec:
+  to:
+    kind: Service
+    name: http-{{ .Release.Name }}-otel-collector-loadbalancer
+    weight: 100
+  port:
+    targetPort: 4318
+  host: {{ .Values.route.host | default "" }}
+  path: {{ .Values.route.path }}
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: {{ .Values.route.insecureEdgeTerminationPolicy }}
 {{- end }}
