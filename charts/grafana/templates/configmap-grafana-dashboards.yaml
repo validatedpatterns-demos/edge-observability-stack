@@ -2350,7 +2350,7 @@ data:
               "expr": "rate(system_network_io{host_name=\"${host}\", service_namespace=\"${service_namespace}\", direction=\"receive\"}[$__interval])",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "{{device}}",
+              "legendFormat": "{{`{{device}}`}}",
               "range": true,
               "refId": "A",
               "step": 240
@@ -2364,7 +2364,7 @@ data:
               "expr": "rate(system_network_io{host_name=\"${host}\", service_namespace=\"${service_namespace}\", direction=\"transmit\"}[$__interval])",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "trans {{device}} ",
+              "legendFormat": "trans {{`{{device}}`}} ",
               "range": true,
               "refId": "B",
               "step": 240
@@ -2799,7 +2799,7 @@ data:
               "editorMode": "code",
               "expr": "irate(system_disk_operations{host_name=\"${host}\",service_namespace=\"${service_namespace}\", direction=\"read\"}[$__rate_interval])",
               "intervalFactor": 4,
-              "legendFormat": "{{device}} - Reads completed",
+              "legendFormat": "{{`{{device}}`}} - Reads completed",
               "range": true,
               "refId": "A",
               "step": 240
@@ -2813,7 +2813,7 @@ data:
               "expr": "irate(system_disk_operations{host_name=\"${host}\",service_namespace=\"${service_namespace}\", direction=\"write\"}[$__rate_interval])",
               "hide": false,
               "intervalFactor": 1,
-              "legendFormat": "{{device}} - Writes completed",
+              "legendFormat": "{{`{{device}}`}} - Writes completed",
               "range": true,
               "refId": "B",
               "step": 240
@@ -3037,7 +3037,7 @@ data:
               "format": "time_series",
               "hide": false,
               "intervalFactor": 1,
-              "legendFormat": "{{device}} - Successfully read bytes",
+              "legendFormat": "{{`{{device}}`}} - Successfully read bytes",
               "range": true,
               "refId": "A",
               "step": 240
@@ -3052,7 +3052,7 @@ data:
               "format": "time_series",
               "hide": false,
               "intervalFactor": 1,
-              "legendFormat": "{{device}} - Successfully written bytes",
+              "legendFormat": "{{`{{device}}`}} - Successfully written bytes",
               "range": true,
               "refId": "B",
               "step": 240
@@ -3157,7 +3157,7 @@ data:
               "expr": "system_filesystem_utilization{host_name=\"${host}\",service_namespace=\"${service_namespace}\",device!~'rootfs'}",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "{{mountpoint}}",
+              "legendFormat": "{{`{{mountpoint}}`}}",
               "range": true,
               "refId": "A",
               "step": 240
@@ -3416,7 +3416,7 @@ data:
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": "{{process_command}} / {{state}}",
+              "legendFormat": "{{`{{process_command}}`}} / {{`{{state}}`}}",
               "range": true,
               "refId": "A",
               "step": 240
@@ -3827,7 +3827,7 @@ data:
               "format": "time_series",
               "hide": false,
               "intervalFactor": 1,
-              "legendFormat": "{{process_command}}",
+              "legendFormat": "{{`{{process_command}}`}}",
               "range": true,
               "refId": "A",
               "step": 240
@@ -3967,7 +3967,7 @@ data:
               "hide": false,
               "interval": "",
               "intervalFactor": 1,
-              "legendFormat": "{{process_command}} / {{direction}}",
+              "legendFormat": "{{`{{process_command}}`}} / {{`{{direction}}`}}",
               "range": true,
               "refId": "A",
               "step": 240
