@@ -21,7 +21,7 @@ data:
       logging:  # Optional: log metrics for debugging
         loglevel: debug
       otlphttp/mimir:
-        endpoint: {{ .Values.global.mimirurl | quote }}/oltp
+        endpoint: {{ .Values.global.mimirurl }}/oltp
         
 
     processors:

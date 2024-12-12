@@ -47,16 +47,16 @@ spec:
               value: "{{ .Values.adminPassword }}"
           volumeMounts:
             - name: grafana-datasource-volume
-              mountPath: /etc/grafana/provisioning/datasources/datasources.yaml
+              mountPath: /etc/grafana/provisioning/datasources/datasource.yaml
             - name: grafana-dashboard-volume
-              mountPath: /etc/grafana/provisioning/dashboards/
+              mountPath: /etc/grafana/provisioning/dashboards/grafana-hostmetrics.json
       volumes:
         - name: grafana-datasource-volume
           configMap:
             name: grafana-datasources
         - name: grafana-dashboard-volume
           configMap:
-            name: otel-dashboard
+            name: grafana-dashboards
         
       {{- with .Values.nodeSelector }}
       nodeSelector:

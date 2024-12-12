@@ -9,7 +9,7 @@ data:
     - name: mimir
       type: prometheus
       access: proxy
-      url: {{ .Values.global.mimirurl | quote }}/prometheus
+      url: {{ .Values.global.mimirurl }}/prometheus
       isDefault: true
       jsonData:
         httpMethod: POST
