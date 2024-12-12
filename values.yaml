@@ -1,4 +1,5 @@
 # Default values for edge-observability-stack.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-mimirurl: "http://edge-observability-stack-mimir:9009"
+global:
+  mimirurl: "http://edge-observability-stack-mimir:9009"
