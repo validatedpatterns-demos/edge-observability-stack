@@ -1,0 +1,15 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: grafana-dashboard-config
+data:
+  dashboards.yaml: |
+    apiVersion: 1
+    providers:
+    - name: "Host Metrics Dashboards"
+      orgId: 1
+      folder: ""
+      type: file
+      disableDeletion: false
+      options:
+        path: /etc/grafana/provisioning/dashboards/data

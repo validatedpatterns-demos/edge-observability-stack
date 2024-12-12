@@ -48,8 +48,10 @@ spec:
           volumeMounts:
             - name: grafana-datasource-volume
               mountPath: /etc/grafana/provisioning/datasources
-            - name: grafana-dashboard-volume
+            - name: grafana-dashboard-config
               mountPath: /etc/grafana/provisioning/dashboards
+            - name: grafana-dashboard-volume
+              mountPath: /etc/grafana/provisioning/dashboards/data
       volumes:
         - name: grafana-datasource-volume
           configMap:
@@ -57,6 +59,9 @@ spec:
         - name: grafana-dashboard-volume
           configMap:
             name: grafana-dashboards
+        - name: grafana-dashboard-config
+          configMap:
+            name: grafana-dashboard-config
         
       {{- with .Values.nodeSelector }}
       nodeSelector:
