@@ -56,7 +56,7 @@ spec:
             name: grafana-datasources
         - name: grafana-dashboard-volume
           configMap:
-            name: otel-dashboard
+            name: grafana-dashboards
         
       {{- with .Values.nodeSelector }}
       nodeSelector:
