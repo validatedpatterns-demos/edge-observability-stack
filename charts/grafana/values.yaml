@@ -1,7 +1,6 @@
 # Default values for grafana.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-
 replicaCount: 1
 
 image:
@@ -46,36 +45,6 @@ service:
   type: ClusterIP
   port: 3000
 
-# Grafana configuration for Prometheus as a data source
-datasources:
-  datasources.yaml:
-    apiVersion: 1
-    datasources:
-    - name: Mimir
-      type: prometheus
-      url: http://mimir.edge-stack.svc.cluster.local:9009 # Change this to your Prometheus service address
-      # url: {? {.Values.prometheus.url | quote: ''} : ''}
-      access: proxy
-      isDefault: true
-providers:
-  grafana-dashboards.yaml:
-    apiVersion: 1
-    providers:
-    - name: 'RED Metrics (classic histogram)'
-      type: file
-      options:
-        path: /otel-lgtm/grafana-dashboard-red-metrics-classic.json
-        foldersFromFilesStructure: false
-    - name: 'RED Metrics (exponential/native histogram)'
-      type: file
-      options:
-        path: /otel-lgtm/grafana-dashboard-red-metrics-native.json
-        foldersFromFilesStructure: false
-    - name: 'JVM Metrics'
-      type: file
-      options:
-        path: /otel-lgtm/grafana-dashboard-jvm-metrics.json
-        foldersFromFilesStructure: false
 # Enable persistence for Grafana data (optional)
 persistence:
   enabled: true

@@ -46,13 +46,18 @@ spec:
             - name: GF_SECURITY_ADMIN_PASSWORD
               value: "{{ .Values.adminPassword }}"
           volumeMounts:
-            - name: config
-              mountPath: /etc/grafana/provisioning/datasources
-              
+            - name: grafana-datasource-volume
+              mountPath: /etc/grafana/provisioning/datasources/datasources.yaml
+            - name: grafana-dashboard-volume
+              mountPath: /etc/grafana/provisioning/dashboards/
       volumes:
-        - name: config
+        - name: grafana-datasource-volume
           configMap:
-            name: {{ include "grafana.fullname" . }}-config
+            name: grafana-datasources
+        - name: grafana-dashboard-volume
+          configMap:
+            name: otel-dashboard
+        
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
