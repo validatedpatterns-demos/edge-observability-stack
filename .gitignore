@@ -2,6 +2,7 @@ node_modules
 .DS_Store
 charts/.DS_Store
 charts/grafana/.DS_Store
+charts/otel-collector/.DS_Store
 dist
 dist-ssr
 *.local

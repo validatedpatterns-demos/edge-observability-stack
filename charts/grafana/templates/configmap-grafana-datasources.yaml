@@ -6,7 +6,7 @@ data:
   datasource.yaml: |
     apiVersion: 1
     datasources:
-    - name: mimir
+    - name: Mimir
       type: prometheus
       access: proxy
       url: {{ .Values.global.mimirurl }}/prometheus
