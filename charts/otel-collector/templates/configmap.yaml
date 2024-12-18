@@ -18,10 +18,7 @@ data:
       logging:  # Optional: log metrics for debugging
         loglevel: debug
       otlphttp/mimir:
-        endpoint: {{ .Values.global.mimirurl }}/oltp
-      prometheusremotewrite:
-        endpoint: {{ .Values.global.mimirurl }}/api/v1/push
-
+        endpoint: {{ .Values.global.mimirurl }}/otlp
     processors:
       batch:
         timeout: 10s
@@ -31,4 +28,4 @@ data:
         metrics:
           receivers: [otlp]
           processors: [batch]
-          exporters: [logging,debug,prometheusremotewrite]
+          exporters: [logging,debug,otlphttp/mimir]
