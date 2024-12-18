@@ -8,6 +8,7 @@ data:
     datasources:
     - name: Mimir
       type: prometheus
+      uid: PAE45454D0EDB9216
       access: proxy
       url: {{ .Values.global.mimirurl }}/prometheus
       isDefault: true
